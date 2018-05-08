@@ -1,0 +1,89 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 5px;
+    grid-auto-flow: dense;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.container>img {
+    width: 100%;
+    /* height: 100%; */
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #999;
+}
+
+.wide {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.horizontal {
+    grid-column: span 2;
+}
+
+.verticle {
+    grid-row: span 2;
+}
+
+.seperator {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+    border-bottom: 5px solid yellow;
+    margin-bottom: 10px;
+}
+
+/*Image hover animation */
+
+.container>img:hover {
+    transition: 0.5s;
+    transform: scale(1.02);
+    box-shadow: 5px 5px 5px #666;
+}
+
+.view {
+    grid-column: 2 / -2;
+    grid-row: 1 / 2;
+    height: 600px;
+    object-fit: scale-down;
+    /*so that our image is displayed without any cropping*/
+    transition: unset !important;
+    transform: unset !important;
+    box-shadow: unset !important;
+    cursor: unset !important;
+}
+
+.view:hover {
+    transition: unset !important;
+    transform: unset !important;
+    box-shadow: unset !important;
+    cursor: unset !important;
+}
+
+.prev,
+.next {
+    justify-self: center;
+    align-self: center;
+    font-size: 80px;
+    cursor: pointer;
+    color: royalblue;
+}
+.prev:hover,
+.next:hover {
+  transform: scale(1.5);
+  transition: 0.5s;
+}
+h1{
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+/* Todo: check responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        margin-left: 0%;
+        margin-right: 0%;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
