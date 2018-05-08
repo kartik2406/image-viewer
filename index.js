@@ -1,33 +1,32 @@
-let images = document.querySelectorAll('img');
+let images = document.querySelectorAll('.container img');
 
-function removeEnlarge() {
-    images.forEach(img => {
-        if (img.classList) {
-            img.classList.remove('view');
-        }
-    });
+function removeFromView() {
+    let imageInView = getImageInView();
+    imageInView.classList.remove('view');
 }
 
+/* function that displays the selected image at the top */
 function view(element) {
-    removeEnlarge();
-    element.classList.add('view');
+    removeFromView();
+    element.classList.add('view'); //view class does the magic
 }
 
+/* Return the image element which is currently in view */
 function getImageInView() {
     return document.querySelector('.view');
 }
-
+/* previous button logic */
 function prev() {
     let imageInView = getImageInView() //get the element which is in view
-    console.log(imageInView.previousElementSibling , imageInView.previousElementSibling.nodeName)
     if (imageInView.previousElementSibling && imageInView.previousElementSibling.nodeName == "IMG") {
         view(imageInView.previousElementSibling);
-    } else{
+    } else {
         let lastImage = document.querySelector('.container img:last-child');
         view(lastImage);
     }
 }
 
+/* next button logic */
 function next() {
     let imageInView = getImageInView() //get the element which is in view
     //if there is next image available go to next, else go to the first image
@@ -40,6 +39,7 @@ function next() {
 
 }
 
+/* add click event listener for each image*/
 images.forEach(img => {
     img.addEventListener('click', function () {
         view(this);
